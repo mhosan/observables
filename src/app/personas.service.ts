@@ -23,12 +23,13 @@ export class PersonasService {
   }
 
   addPersona(pPersona: Persona){
-    this.personas.push(pPersona);  //ahora que se agregó una nueva persona y el array cambio, hay que enviarlo a quienes
+    this.personas.push(pPersona);   //ahora que se agregó una nueva persona y el array cambio, hay que enviarlo a quienes
                                     //estan escuchando o subscriptos con el metodo next. Luego falta crear un metodo para
                                     //que se puedan subscribir, ya que no es posible subscribirse al subject. El metodo
                                     //es getPersonas$
     this.personas$.next(this.personas);
   }
+
   getPersonas$(): Observable<Persona[]>{
     return this.personas$.asObservable(); //transformamos el subject personas$ en observable para que se puedan subscribir
   }
