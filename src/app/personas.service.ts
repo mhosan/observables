@@ -1,8 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
-/* 
-el subject es el que genera el observable, es común que terminen en $
+/*
+Observable: un flujo de datos (stream) en el tiempo. 
+Un subject es un tipo especial de observable que permite realizar varias tareas
+Es especial porque aparte de ser un observable puede ser un observador
+
+Un BehaviorSubject extiende al subject y emite el último valor a las nuevas suscripciones
+El BehaviorSubject requiere un valor por defecto (el subject no), devuelve el último valor cuando hay 
+una nueva suscripcion (esto en el subject no ocurre) y permite recuperar el último valor con getValue() 
+
+El subject es el que genera el observable, es común que terminen en $
+El subject emite con el metodo next()
+Para recibir lo que emite con el metodo next() hay que estar suscripto y esta suscripción debe estar hecha antes
+que el metodo next() emita. O sea, primero la suscrip y luego la emision. Por ej esto muestra el observable por consola
+this.personas$.subscribe(respuesta => console.log(respuesta));
+this.personas$.next('hola mundo');
+pero esto no. Esto muestra a partir de la subscripcion
+this.personas$.next('hola mundo');
+this.personas$.subscribe(respuesta => console.log(respuesta));
+El subject tambien permite subscribirse a si mismo.
+
  */
 export interface Persona {
   nombre: string,
