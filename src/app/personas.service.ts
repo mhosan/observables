@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
-/*
+/* hoy, 31 de agosto de 2022
 Observable: "un flujo de datos (stream) en el tiempo."
 
 Un subject es un tipo especial de observable que permite realizar varias tareas
